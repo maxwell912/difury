@@ -1,0 +1,10 @@
+C:\Users\V\Desktop\difury\bin\Release\difury.exe.config
+C:\Users\V\Desktop\difury\bin\Release\difury.exe
+C:\Users\V\Desktop\difury\bin\Release\difury.pdb
+C:\Users\V\Desktop\difury\obj\Release\difury.csprojAssemblyReference.cache
+C:\Users\V\Desktop\difury\obj\Release\difury.Form2.resources
+C:\Users\V\Desktop\difury\obj\Release\difury.Properties.Resources.resources
+C:\Users\V\Desktop\difury\obj\Release\difury.csproj.GenerateResource.cache
+C:\Users\V\Desktop\difury\obj\Release\difury.csproj.CoreCompileInputs.cache
+C:\Users\V\Desktop\difury\obj\Release\difury.exe
+C:\Users\V\Desktop\difury\obj\Release\difury.pdb
