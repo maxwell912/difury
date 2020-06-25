@@ -5,42 +5,44 @@ namespace difury
 {
     class Rub_Kutt
     {
-        Decimal p;
         Decimal h;
+        Func<decimal, decimal, decimal> f;
+        Func<decimal, decimal, decimal> g;
 
-        public IEnumerable<PointD> GetPoints(Decimal x0, Decimal y0, Decimal p, Decimal h)
+        public Rub_Kutt(Func<decimal, decimal, decimal> f, Func<decimal, decimal, decimal> g)
         {
-            this.p = p;
+            this.f = f;
+            this.g = g;
+        }
+
+
+        public IEnumerable<PointD> GetPoints(PointD start, Decimal p, Decimal h)
+        {
             this.h = h;
 
-            Decimal prev_x = x0;
-            Decimal prev_y = y0;
+            Decimal prev_x = start.X;
+            Decimal prev_y = start.Y;
 
             Decimal next_x;
             Decimal next_y;
 
             while (true)
             {
-                next_x = prev_x + (k1(prev_x, prev_y) + 2 * k2(prev_x, prev_y) + 2 * k3(prev_x, prev_y) + k4(prev_x, prev_y)) / 6;
-                next_y = prev_y + (l1(prev_x, prev_y) + 2 * l2(prev_x, prev_y) + 2 * l3(prev_x, prev_y) + l4(prev_x, prev_y)) / 6;
+                try
+                {
+                    next_x = prev_x + (k1(prev_x, prev_y) + 2 * k2(prev_x, prev_y) + 2 * k3(prev_x, prev_y) + k4(prev_x, prev_y)) / 6;
+                    next_y = prev_y + (l1(prev_x, prev_y) + 2 * l2(prev_x, prev_y) + 2 * l3(prev_x, prev_y) + l4(prev_x, prev_y)) / 6;
+                    prev_x = next_x;
+                    prev_y = next_y;
+                }
+                catch (Exception) { yield break; }
+
                 yield return new PointD(next_x, next_y);
-                prev_x = next_x;
-                prev_y = next_y;
             }
         
         }
 
         #region
-        Decimal f(Decimal a, Decimal b)
-        {
-            return 1 - a * b;
-        }
-
-        Decimal g(Decimal a, Decimal b)
-        {
-            return p * b * (a - 2 / (b + 1));
-        }
-
         Decimal k1(Decimal x, Decimal y)
         {
             return h * f(x, y);
